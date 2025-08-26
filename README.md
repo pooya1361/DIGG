@@ -77,6 +77,34 @@ npm run dev
 ```
 Frontend will start on `http://localhost:3000`
 
+## Docker
+
+This project includes a **multi-stage Dockerfile** that builds both frontend and backend into a single image. The image runs the Quarkus backend and serves the Vue frontend together.
+
+### 1. Build the Docker image
+From the **repo root**:
+
+```bash
+docker build -t digg-app .
+```
+
+### 2. Run the Docker container
+Map the backend port `8080` to your host:
+
+```bash
+docker run -p 8080:8080 digg-app
+```
+
+- **Frontend is served at:** `http://localhost:8080/index.html`
+- **Backend API endpoints are available at:** `http://localhost:8080/users`, etc.
+
+### 3. Notes
+- The container is self-contained: no need to run `npm` or `mvn` separately.
+- The Vue frontend is built and copied into Quarkus static resources.
+- This follows a **two-stage Docker build**:
+  1. **Build stage:** compiles Vue frontend and Quarkus backend.
+  2. **Runtime stage:** creates the final lightweight image with only the JRE and Quarkus app.
+
 ## API Endpoints
 
 ### Users
@@ -140,12 +168,15 @@ digg/
 │       └── resource/UserResource.java  # REST endpoints
 ├── src/main/resources/
 │   ├── application.properties      # Quarkus configuration
+│   └── import.sql                  # Initial data (optional)
 ├── src/test/java/                  # REST Assured tests
-├── frontend/                       # Vue 3 application
+├── webapp/                         # Vue 3 application
 │   ├── src/
+│   ├── public/
 │   ├── package.json
 │   ├── vite.config.ts
 │   └── tailwind.config.js
+├── Dockerfile                      # Multi-stage Docker build
 ├── pom.xml                         # Maven configuration
 └── README.md
 ```
@@ -203,10 +234,6 @@ The API includes proper error responses:
 ## Contributing
 
 This is a test project for evaluating technologies and approaches for digital government services.
-
-## License
-
-[Add appropriate license information]
 
 ---
 
