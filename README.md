@@ -58,7 +58,7 @@ Each user contains:
 
 ### 1. Clone the repository
 ```bash
-git clone <repository-url>
+git clone DIGG
 cd digg
 ```
 
@@ -71,11 +71,11 @@ Backend will start on `http://localhost:8080`
 ### 3. Start the frontend (Vue 3)
 ```bash
 # Navigate to frontend directory
-cd frontend  # or wherever your Vue app is located
+cd webapp
 npm install
 npm run dev
 ```
-Frontend will start on `http://localhost:5173`
+Frontend will start on `http://localhost:3000`
 
 ## API Endpoints
 
@@ -140,11 +140,9 @@ digg/
 │       └── resource/UserResource.java  # REST endpoints
 ├── src/main/resources/
 │   ├── application.properties      # Quarkus configuration
-│   └── import.sql                  # Initial data (optional)
 ├── src/test/java/                  # REST Assured tests
 ├── frontend/                       # Vue 3 application
 │   ├── src/
-│   ├── public/
 │   ├── package.json
 │   ├── vite.config.ts
 │   └── tailwind.config.js
@@ -177,7 +175,7 @@ Uses **H2 in-memory database** configured via Quarkus. Data is reset on applicat
 
 Once the backend is running, explore the API at:
 - **Swagger UI:** `http://localhost:8080/q/swagger-ui`
-- **OpenAPI JSON:** `http://localhost:8080/q/openapi`
+- **Health JSON:** `http://localhost:8080/q/health`
 
 ## Dependencies
 
