@@ -56,7 +56,7 @@ public class DataInitializer {
 
         System.out.println("Generating 50 sample users...");
 
-        for (int i = 1; i <= 50; i++) {
+        for (int i = 1; i <= 100; i++) {
             String firstName = getRandomElement(firstNames);
             String lastName = getRandomElement(lastNames);
             String name = firstName + " " + lastName;
