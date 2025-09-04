@@ -197,11 +197,6 @@ digg/
 
 Uses **H2 in-memory database** configured via Quarkus. Data is reset on application restart, making it perfect for testing and development.
 
-**Key features:**
-- Automatic table creation from Panache entities
-- SQL import scripts supported (`import.sql`)
-- Web console available in dev mode
-
 ## API Documentation
 
 Once the backend is running, explore the API at:
